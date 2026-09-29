@@ -1,5 +1,7 @@
 # Clash Verge 多订阅合并脚本
 
+[English](README.en.md)
+
 脚本读取你指定的一个或多个本地订阅 YAML 文件，合并节点、DNS、规则和规则集定义，然后生成一份 Clash/Mihomo 配置。订阅增加时，在命令中多加一个文件路径即可。
 
 ## 准备

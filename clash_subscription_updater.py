@@ -379,6 +379,12 @@ def build_config(configs, labels):
     merged_dns, dns_source = normalize_dns(configs, labels)
     out = {"mixed-port": 7897, "allow-lan": False, "mode": "rule", "log-level": "info", "ipv6": False,
            "dns": merged_dns, "proxies": proxies, "proxy-groups": groups, "rules": rules}
+    # These are portable core behavior options, unlike listener/controller
+    # addresses and ports which belong to the local machine and must not be
+    # copied from arbitrary subscription profiles.
+    for key in ("tcp-concurrent", "unified-delay"):
+        if any(config.get(key) is True for config in configs):
+            out[key] = True
     if providers:
         out["rule-providers"] = providers
     out["profile"] = {"store-selected": True}

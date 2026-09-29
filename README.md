@@ -27,7 +27,7 @@ python .\clash_subscription_updater.py `
 ```powershell
 python .\clash_subscription_updater.py `
   "C:\订阅\a.yaml" "C:\订阅\b.yaml" `
---labels 来源一 来源二 `
+  --labels 来源一 来源二 `
   -o "C:\订阅\合并配置.yaml"
 ```
 

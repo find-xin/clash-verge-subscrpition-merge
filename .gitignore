@@ -1,0 +1,10 @@
+# Local environments and Python cache
+.venv*/
+venv/
+__pycache__/
+*.py[cod]
+
+# Generated Clash configs and subscription data may contain credentials
+*.yaml
+*.yml
+*.csv

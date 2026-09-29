@@ -233,8 +233,15 @@ def node_names(proxies, pattern):
     return [p["name"] for p in proxies if rx.search(p["name"])]
 
 
+# Some providers encode account notices, update instructions, and website or
+# Telegram links as fake proxy entries with otherwise valid protocol fields.
+# Filter by the display name before adding source prefixes or country groups.
 INFO_NODE_PATTERN = re.compile(
-    r"(剩余流量|套餐到期|到期时间|有效期至|流量重置|流量查询|官网地址|官网[:：]|网址[:：]|使用说明|订阅公告)",
+    r"(剩余流量|套餐到期|到期时间|有效期至|流量重置|流量查询|"
+    r"官网|网站|网址|主页|首页|防失联|失联页|使用说明|使用文档|订阅公告|公告|通知|"
+    r"订阅.{0,12}(?:更新|刷新|地址)|(?:更新|刷新).{0,12}订阅|"
+    r"每次使用前|超过.{0,12}节点|节点.{0,10}(?:不够|超过)|不够.{0,12}(?:请|去|到|前往)|"
+    r"电报群|telegram|t\.me/|https?://|www\.)",
     re.IGNORECASE,
 )
 

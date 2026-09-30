@@ -253,7 +253,7 @@ def is_subscription_info_node(name):
 def health_group(name, members, tolerance):
     return {"name": name, "type": "url-test", "proxies": members,
             "url": "https://www.gstatic.com/generate_204", "interval": 200,
-            "timeout": 500, "max-failed-times": 3, "lazy": True,
+            "timeout": 1500, "max-failed-times": 3, "lazy": True,
             "tolerance": tolerance}
 
 
